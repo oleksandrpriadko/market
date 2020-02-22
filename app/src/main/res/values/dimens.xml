@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="constraint_match">0dp</dimen>
+    <dimen name="radius_corners">5dp</dimen>
+    <dimen name="stroke_width">1dp</dimen>
+</resources>

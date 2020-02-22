@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.oleksandrpriadko.test.market"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    testImplementation 'junit:junit:4.13'
+
+    implementation 'androidx.core:core-ktx:1.2.0'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    implementation 'com.github.oleksandrpriadko.libraries:core:' + librariesVersion
+    implementation 'com.github.oleksandrpriadko.libraries:mvp:' + librariesVersion
+    implementation 'com.github.oleksandrpriadko.libraries:retrofit:' + librariesVersion
+    implementation 'androidx.constraintlayout:constraintlayout:' + constraintLayout
+}

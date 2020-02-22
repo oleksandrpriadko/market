@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/sellTitleTextView"
+        android:layout_width="@dimen/constraint_match"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/selector_sell"
+        android:text="@string/sell"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/buyTitleTextView"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/buyTitleTextView"
+        android:layout_width="@dimen/constraint_match"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/selector_buy"
+        android:gravity="end"
+        android:text="@string/buy"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sellTitleTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/sellPriceIndicatorImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/constraint_match"
+        android:background="@drawable/selector_sell"
+        android:src="@drawable/ic_remove_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/sellPriceTextView"
+        app:layout_constraintEnd_toStartOf="@id/sellPriceTextView"
+        app:layout_constraintStart_toStartOf="@id/sellTitleTextView"
+        app:layout_constraintTop_toTopOf="@id/sellPriceTextView"
+        tools:ignore="ContentDescription"
+        tools:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/sellPriceTextView"
+        android:layout_width="@dimen/constraint_match"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_sell"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@id/buyPriceTextView"
+        app:layout_constraintStart_toEndOf="@id/sellPriceIndicatorImageView"
+        app:layout_constraintTop_toBottomOf="@id/sellTitleTextView"
+        tools:text="Sell Price" />
+
+    <ImageView
+        android:id="@+id/buyPriceIndicatorImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/constraint_match"
+        android:background="@drawable/selector_sell"
+        android:src="@drawable/ic_remove_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/buyPriceTextView"
+        app:layout_constraintEnd_toEndOf="@id/buyTitleTextView"
+        app:layout_constraintStart_toEndOf="@id/buyPriceTextView"
+        app:layout_constraintTop_toTopOf="@id/sellPriceTextView"
+        tools:ignore="ContentDescription"
+        tools:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/buyPriceTextView"
+        android:layout_width="@dimen/constraint_match"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_buy"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@id/buyPriceIndicatorImageView"
+        app:layout_constraintStart_toEndOf="@id/sellPriceTextView"
+        app:layout_constraintTop_toBottomOf="@id/buyTitleTextView"
+        tools:text="Buy Price" />
+
+    <TextView
+        android:id="@+id/sellOldPriceTextView"
+        android:layout_width="@dimen/constraint_match"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_sell"
+        android:gravity="start|center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toStartOf="@id/buyOldPriceTextView"
+        app:layout_constraintStart_toStartOf="@id/sellTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/sellPriceTextView"
+        tools:text="Sell Old Price" />
+
+    <TextView
+        android:id="@+id/buyOldPriceTextView"
+        android:layout_width="@dimen/constraint_match"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_buy"
+        android:gravity="end|center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="@id/buyTitleTextView"
+        app:layout_constraintStart_toEndOf="@id/sellOldPriceTextView"
+        app:layout_constraintTop_toBottomOf="@id/buyPriceTextView"
+        tools:text="Buy Old Price" />
+
+    <TextView
+        android:id="@+id/unitsTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/units"
+        android:textColor="@color/selector_input_title"
+        app:layout_constraintEnd_toEndOf="@id/unitsInput"
+        app:layout_constraintStart_toStartOf="@id/unitsInput"
+        app:layout_constraintTop_toBottomOf="@id/sellOldPriceTextView" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/unitsInput"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_input_buy"
+        android:gravity="center"
+        android:hint="@string/units"
+        android:imeOptions="actionGo"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        app:layout_constraintStart_toStartOf="@id/sellOldPriceTextView"
+        app:layout_constraintTop_toBottomOf="@id/unitsTitleTextView" />
+
+    <TextView
+        android:id="@+id/amountTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amount"
+        android:textColor="@color/selector_input_title"
+        app:layout_constraintEnd_toEndOf="@id/amountInput"
+        app:layout_constraintStart_toStartOf="@id/amountInput"
+        app:layout_constraintTop_toBottomOf="@id/buyOldPriceTextView" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/amountInput"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_input_buy"
+        android:gravity="center"
+        android:hint="@string/amount"
+        android:imeOptions="actionGo"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@id/buyOldPriceTextView"
+        app:layout_constraintTop_toBottomOf="@id/amountTitleTextView" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="@dimen/constraint_match"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/background_button_cancel"
+        android:text="@android:string/cancel"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/confirmButton"
+        app:layout_constraintStart_toStartOf="@id/sellTitleTextView" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="@dimen/constraint_match"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/selector_button_buy"
+        android:text="@string/confirm"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/buyTitleTextView"
+        app:layout_constraintStart_toEndOf="@id/cancelButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Market</string>
+    <string name="sell">Sell</string>
+    <string name="buy">Buy</string>
+    <string name="units">Units</string>
+    <string name="amount">Amount</string>
+    <string name="confirm">Confirm</string>
+</resources>
