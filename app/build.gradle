@@ -37,4 +37,9 @@ dependencies {
     implementation 'com.github.oleksandrpriadko.libraries:mvp:' + librariesVersion
     implementation 'com.github.oleksandrpriadko.libraries:retrofit:' + librariesVersion
     implementation 'androidx.constraintlayout:constraintlayout:' + constraintLayout
+
+    implementation 'android.arch.lifecycle:extensions:' + lifecycleJava
+    implementation 'androidx.lifecycle:lifecycle-common-java8:' + lifecycleJava
+
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }

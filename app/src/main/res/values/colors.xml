@@ -8,5 +8,5 @@
     <color name="buyColorDisabled">#3F1BC2D8</color>
     <color name="sellColor">#A8640B</color>
     <color name="sellColorDisabled">#77A8640B</color>
-    <color name="gray">#5C5C5C</color>
+    <color name="gray">#4D5C5C5C</color>
 </resources>
