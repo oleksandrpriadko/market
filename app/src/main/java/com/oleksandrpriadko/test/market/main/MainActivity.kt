@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import com.oleksandrpriadko.test.market.InputFilterDecimalTrim
 import com.oleksandrpriadko.test.market.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,7 +24,7 @@ class MainActivity : AppCompatActivity(), PresenterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(this, this, getString(R.string.baseUrl))
 
         presenter?.saveOnPendingActionRunnable(Runnable {
             presenter?.requestViewState()
@@ -137,19 +140,69 @@ class MainActivity : AppCompatActivity(), PresenterView {
     }
 
     override fun onIncreaseBuyIndicator() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        buyPriceIndicatorImageView.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp)
+        buyPriceIndicatorImageView.imageTintList = getColorStateList(android.R.color.holo_green_dark)
     }
 
-    override fun onIncreaseSellIndicator() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onSameBuyIndicator() {
+        buyPriceIndicatorImageView.setImageResource(R.drawable.ic_remove_black_24dp)
+        buyPriceIndicatorImageView.imageTintList = getColorStateList(android.R.color.white)
     }
 
     override fun onDecreaseBuyIndicator() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        buyPriceIndicatorImageView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp)
+        buyPriceIndicatorImageView.imageTintList = getColorStateList(android.R.color.holo_red_dark)
+    }
+
+    override fun onIncreaseSellIndicator() {
+        sellPriceIndicatorImageView.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp)
+        sellPriceIndicatorImageView.imageTintList = getColorStateList(android.R.color.holo_green_dark)
+    }
+
+    override fun onSameSellIndicator() {
+        sellPriceIndicatorImageView.setImageResource(R.drawable.ic_remove_black_24dp)
+        sellPriceIndicatorImageView.imageTintList = getColorStateList(android.R.color.white)
     }
 
     override fun onDecreaseSellIndicator() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        sellPriceIndicatorImageView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp)
+        sellPriceIndicatorImageView.imageTintList = getColorStateList(android.R.color.holo_red_dark)
+    }
+
+    override fun onSetSellPrice(price: Double) {
+        sellPriceTextView.text = price.toString()
+    }
+
+    override fun onSetOldSellPrice(price: Double) {
+        buyOldPriceTextView.text = price.toString()
+    }
+
+    override fun onSetBuyPrice(price: Double) {
+        buyPriceTextView.text = price.toString()
+    }
+
+    override fun onSetOldBuyPrice(price: Double) {
+        sellOldPriceTextView.text = price.toString()
+    }
+
+    override fun onSetAmount(amountAsString: String) {
+        amountInput.removeTextChangedListener(watcherAmount)
+        amountInput.setText(amountAsString)
+        amountInput.addTextChangedListener(watcherAmount)
+    }
+
+    override fun onSetUnits(unitsAsString: String) {
+        unitsInput.removeTextChangedListener(watcherUnits)
+        unitsInput.setText(unitsAsString)
+        unitsInput.addTextChangedListener(watcherUnits)
+    }
+
+    override fun getCurrentUnitsAsString(): String {
+        return unitsInput.text.toString()
+    }
+
+    override fun getCurrentAmountAsString(): String {
+        return amountInput.text.toString()
     }
 
     override fun onEnableConfirmButton(enable: Boolean) {
@@ -158,6 +211,10 @@ class MainActivity : AppCompatActivity(), PresenterView {
 
     override fun isInputNullOrBlank(): Boolean {
         return unitsInput.text.isNullOrBlank() && amountInput.text.isNullOrBlank()
+    }
+
+    override fun showError() {
+        Toast.makeText(this, "Error!", Toast.LENGTH_LONG).show()
     }
 
     private val watcherUnits = object : TextWatcher {

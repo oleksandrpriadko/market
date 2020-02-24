@@ -1,4 +1,4 @@
-package com.oleksandrpriadko.test.market.main
+package com.oleksandrpriadko.test.market
 
 import android.text.InputFilter
 import android.text.Spanned

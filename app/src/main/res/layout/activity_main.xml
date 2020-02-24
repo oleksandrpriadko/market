@@ -41,12 +41,12 @@
         android:background="@drawable/selector_sell"
         android:padding="5dp"
         android:src="@drawable/ic_remove_black_24dp"
+        android:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@id/sellPriceTextView"
         app:layout_constraintEnd_toStartOf="@id/sellPriceTextView"
         app:layout_constraintStart_toStartOf="@id/sellTitleTextView"
         app:layout_constraintTop_toTopOf="@id/sellPriceTextView"
-        tools:ignore="ContentDescription"
-        tools:tint="@android:color/white" />
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/sellPriceTextView"
@@ -69,12 +69,12 @@
         android:background="@drawable/selector_buy"
         android:padding="5dp"
         android:src="@drawable/ic_remove_black_24dp"
+        android:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@id/buyPriceTextView"
         app:layout_constraintEnd_toEndOf="@id/buyTitleTextView"
         app:layout_constraintStart_toEndOf="@id/buyPriceTextView"
         app:layout_constraintTop_toTopOf="@id/sellPriceTextView"
-        tools:ignore="ContentDescription"
-        tools:tint="@android:color/white" />
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/buyPriceTextView"
@@ -98,7 +98,7 @@
         android:gravity="start|center_vertical"
         android:padding="5dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/gray"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@id/buyOldPriceTextView"
         app:layout_constraintStart_toStartOf="@id/sellTitleTextView"
         app:layout_constraintTop_toBottomOf="@id/sellPriceTextView"
@@ -112,7 +112,7 @@
         android:gravity="end|center_vertical"
         android:padding="5dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/gray"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="@id/buyTitleTextView"
         app:layout_constraintStart_toEndOf="@id/sellOldPriceTextView"
         app:layout_constraintTop_toBottomOf="@id/buyPriceTextView"
@@ -122,26 +122,29 @@
         android:id="@+id/unitsTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:text="@string/units"
         android:textColor="@color/selector_input_title"
-        app:layout_constraintEnd_toEndOf="@id/unitsInput"
         app:layout_constraintStart_toStartOf="@id/unitsInput"
         app:layout_constraintTop_toBottomOf="@id/sellOldPriceTextView" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/unitsInput"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/selector_input_buy"
         android:gravity="center"
         android:hint="@string/units"
         android:imeOptions="actionGo"
         android:inputType="numberDecimal"
-        android:padding="10dp"
+        android:padding="5dp"
         android:singleLine="true"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@id/amountInput"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@id/sellOldPriceTextView"
         app:layout_constraintTop_toBottomOf="@id/unitsTitleTextView" />
 
@@ -149,27 +152,29 @@
         android:id="@+id/amountTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:text="@string/amount"
         android:textColor="@color/selector_input_title"
         app:layout_constraintEnd_toEndOf="@id/amountInput"
-        app:layout_constraintStart_toStartOf="@id/amountInput"
         app:layout_constraintTop_toBottomOf="@id/buyOldPriceTextView" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/amountInput"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/selector_input_buy"
         android:gravity="center"
         android:hint="@string/amount"
         android:imeOptions="actionGo"
         android:inputType="numberDecimal"
-        android:padding="10dp"
+        android:padding="5dp"
         android:singleLine="true"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@id/buyOldPriceTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/unitsInput"
         app:layout_constraintTop_toBottomOf="@id/amountTitleTextView" />
 
     <Button

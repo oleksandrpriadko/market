@@ -3,6 +3,9 @@
     <string name="sell">Sell</string>
     <string name="buy">Buy</string>
     <string name="units">Units</string>
-    <string name="amount">Amount</string>
+    <string name="amount">Amount (£)</string>
     <string name="confirm">Confirm</string>
+
+
+    <string name="baseUrl">https://blockchain.info/</string>
 </resources>

@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="buyColor">#1BC2D8</color>
+    <color name="buyColor">#7B1BC2D8</color>
     <color name="buyColorDisabled">#3F1BC2D8</color>
     <color name="sellColor">#A8640B</color>
     <color name="sellColorDisabled">#77A8640B</color>

@@ -9,20 +9,22 @@ import androidx.lifecycle.LifecycleOwner
  * Copyright © 2020 Oleksandr Priadko. All rights reserved.
  * Created By Oleksandr Priadko
  */
-abstract class BasePresenter<T : LifecycleOwner>(view: T) : DefaultLifecycleObserver {
-
+abstract class BasePresenter<T : LifecycleOwner>(view: T, isLifecycleValid: Boolean) : DefaultLifecycleObserver {
     private val runnableOnNewIntentList: MutableList<Runnable> = mutableListOf()
     private val runnableOnActivityResultList: MutableList<Runnable> = mutableListOf()
     private val runnableOnPendingActionList: MutableList<Runnable> = mutableListOf()
 
     private var isViewBound: Boolean = false
 
+    private var isViewInEditMode = false
+
     protected var view: T? = view
         get() {
             field?.let {
                 return when {
-                    it.lifecycle.currentState.isAtLeast(Lifecycle.State.INITIALIZED) && this.isViewBound
-                            || this.isViewInEditMode -> it
+                    this.isViewInEditMode -> it
+                    it.lifecycle.currentState.isAtLeast(Lifecycle.State.INITIALIZED)
+                            && this.isViewBound -> it
                     else -> null
                 }
             }
@@ -30,15 +32,22 @@ abstract class BasePresenter<T : LifecycleOwner>(view: T) : DefaultLifecycleObse
         }
 
     init {
-        subscribeView(view)
+        isViewInEditMode = !isLifecycleValid
+
+        if (isLifecycleValid) {
+            subscribeView(view)
+        }
     }
 
     private fun subscribeView(view: T) {
+        if (this.view == null) {
+            this.view = view
+        }
+
         if (view.lifecycle.currentState == Lifecycle.State.DESTROYED) {
             logState("dead lifecycle owner")
         } else {
             view.lifecycle.addObserver(this)
-            this.view = view
             logState("subscribed")
         }
     }
@@ -121,6 +130,4 @@ abstract class BasePresenter<T : LifecycleOwner>(view: T) : DefaultLifecycleObse
             runnableList.remove(runnable)
         }
     }
-
-    open var isViewInEditMode = false
 }

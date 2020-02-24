@@ -28,6 +28,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     testImplementation 'junit:junit:4.13'
+    testImplementation 'org.mockito:mockito-core:' + mockitoVersion
 
     implementation 'androidx.core:core-ktx:1.2.0'
 
@@ -42,4 +43,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-common-java8:' + lifecycleJava
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    api 'com.squareup.retrofit2:converter-gson:' + retrofit
+    api 'com.squareup.okhttp3:logging-interceptor:' + okhttp
 }
